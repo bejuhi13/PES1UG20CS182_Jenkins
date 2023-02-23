@@ -3,25 +3,26 @@ pipeline{
     stages{
         stage('Build'){
             steps{
-                sh 'g++ -o task5 task5_code.cpp'
-                build job: 'PES1UG20CS139-1'
+                sh 'g++ -c PES1UG20CS182.cpp'
+                sh 'g++ -o PES1UG20CS656 PES1UG20CS182.cpp'
+                echo 'build stage successfull'
             }
         }
         stage('Test'){
             steps{
-                sh './task5'
-                sh 'exit 1'//error
+                sh './PES1UG20CS182'
+                echo 'Test stage executed successfulllllly'
             }
         }
         stage('Deploy'){
             steps{
-                echo 'Deploying'
+                echo 'Deployed Successfulllllly'
             }
         }
     }
     post{
         failure{
-            echo 'Pipeline failed'
+            echo 'Pipeline Failed'
         }
     }
 }
